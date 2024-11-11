@@ -1,0 +1,21 @@
+// Ejecuta el Apps Script para obtener los datos
+google.script.run.withSuccessHandler(showData).getData();
+
+// Función para mostrar los datos en la tabla
+function showData(dataArray) {
+    const datatablesSimple = document.getElementById('datatablesSimple');
+
+    if (datatablesSimple) {
+        // Crea una nueva instancia de la tabla usando simple-datatables
+        const dataTable = new simpleDatatables.DataTable(datatablesSimple, {
+            data: {
+                headings: ["WDID", "Full Name", "Bono0", "Bono1", "Bono2", "Bono3", "Bono4", "Bono5", "Bono6", "Bono7", "Bono8", "Bono9"],
+                data: dataArray
+            },
+            order: [[0, "asc"]],
+            autoWidth: true
+        });
+    }
+}
+
+
